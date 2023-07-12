@@ -9,6 +9,10 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  get_it: ^7.6.0
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
+  stacked: ^3.4.1
 
 dev_dependencies:
   flutter_test:

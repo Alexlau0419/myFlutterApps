@@ -1,22 +1,51 @@
 import 'package:flutter/material.dart';
+import './tab.dart';
+import './about.dart';
+import './secret.dart';
+import './todo_app.dart';
+//import './todo_main.dart';
 
 void main() {
-  runApp(const MainApp());
+  runApp(const MyApp());
 }
 
-class MainApp extends StatelessWidget {
-  const MainApp({super.key});
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+ @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      routes: <String, WidgetBuilder>{
+        "/about": (BuildContext context) => const About(),
+        "/home": (BuildContext context) => const HomePage(),
+        "/secret": (BuildContext context) => const SecretPage(),
+        "/todo_app": (BuildContext context) => const Todo_app(),
+      },
+      initialRoute: "/home",
+      title: 'Flutter Navigation',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: const HomePage(),
+    );
+  }
+}
+
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({super.key, required this.title});
+  final String title;
 
   @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text('Hello World!!!!'),
-        ),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(widget.title),
       ),
     );
   }
-
-  
 }
